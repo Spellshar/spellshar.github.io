@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <title>Insurance Offers</title>
+</head>
+
+<body style="background-color: #EEEEEE">
+    <div class="container">
+
+        <img class="center" src="img/logo2.png">
+        <h1 class="headline">Min Forsikringsmægler</h1>
+        <p id="please-select-text">Vælg forsikringer:</p>
+        <form id="insurance-form" onsubmit="return handleSubmit()">
+            <label>
+                <input type="checkbox" name="home" value="home">
+                Indboforsikring
+            </label><br>
+            <label>
+                <input type="checkbox" name="house" value="house">
+                Husforsikring
+            </label><br>
+            <label>
+                <input type="checkbox" name="accident" value="accident">
+                Ulykkesforsikring
+            </label><br>
+            <label>
+                <input type="checkbox" name="car" value="car">
+                Bilforsikring
+            </label><br>
+            <label>
+                <input type="checkbox" name="travel" value="travel">
+                Rejseforsikring
+            </label><br>
+            <label>
+                <input type="checkbox" name="dog" value="dog">
+                Hundeforsikring
+            </label><br>
+            <button type="submit">Fortsæt</button>
+        </form>
+
+        <!-- Indboforsikring. -->
+        <div id="home-insurance-headline" style="display: none;">
+            <h2>Indboforsikring</h2>
+        </div>
+
+        <div id="home-insurance-questionsRenting" style="display: none;">
+            <p>Bor du til leje?</p>
+            <button class="btn" onclick="saveAnswerRenting('yes'); submitRenting();">Ja</button>
+            <button class="btn" onclick="saveAnswerRenting('no'); submitRenting();">Nej</button>
+        </div>
+        <div id="follow-up-question" style="display: none;">
+            <p>Har du den indvendige vedligeholdelsespligt?</p>
+            <button class="btn" onclick="saveFollowUpAnswer('yes'); submitFollowUp();">Ja</button>
+            <button class="btn" onclick="saveFollowUpAnswer('no'); submitFollowUp();">Nej</button>
+        </div>
+        <div id="home-insurance-questionsElectronics" style="display: none;">
+            <p>Har du købt noget elektronik indenfor de sidste 4 år, som ville påvirke din privatøkonomi i sådan grad at du ville have det dækket af dit forsikringsselskab, hvis det gik tabt?</p>
+            <button class="btn" onclick="saveAnswerElectronics('yes'); submitElectronics();">Ja</button>
+            <button class="btn" onclick="saveAnswerElectronics('no'); submitElectronics();">Nej</button>
+        </div>
+
+
+        <div id="home-insurance-questionsSudden" style="display: none;">
+            <p>Ønsker du at din forsikring skal dække pludselige skader, som for eksempel at kommer til at vælte sin reol eller taber den dyre vase?</p>
+            <button class="btn" onclick="saveAnswerSudden('yes'); submitSudden();">Ja</button>
+            <button class="btn" onclick="saveAnswerSudden('no'); submitSudden();">Nej</button>
+        </div>
+
+        <div id="home-insurance-questionsCycle" style="display: none;">
+            <p>Ønsker du, at din forsikring skal dække skader, på din cykel, f.eks. ved cykling, såsom at vælte på cykel eller ved hærværk?</p>
+            <button class="btn" onclick="saveAnswerCycle('yes'); submitCycle();">Ja</button>
+            <button class="btn" onclick="saveAnswerCycle('no'); submitCycle();">Nej</button>
+        </div>
+        
+
+        <!-- Husforsikring spg.-->
+        <div id="home-insurance-headline" style="display: none;">
+            <h2>Indboforsikring</h2>
+        </div>
+
+        <div id="house-insurance-headline" style="display: none;">
+            <h2>Husforsikring</h2>
+        </div>
+
+        <div id="house-insurance-headline" style="display: none;">
+            <h2>Ulykkesforsikring</h2>
+        </div>
+
+        <div id="house-insurance-questionsFire" style="display: none;">
+            <p>Ønsker du at dit hus bliver forsikret mod brand og ild, under brand hører brandskader, elskader, lynskader og eksplosioner? Bemærk at det er lovpligtigt at have en brandforsikring, hvis der er gæld i huset.</p>
+            <button class="btn" onclick="saveAnswerFire('yes'); submitFire();">Ja</button>
+            <button class="btn" onclick="saveAnswerFire('no'); submitFire();">Nej</button>
+        </div>
+        <div id="house-insurance-questionsStorm" style="display: none;">
+            <p>Vil du være økonomisk beskyttet mod skader på din bygning på grund af eksempelvis storm, vand, hærværk eller frost? Og ønsker du at have en ansvarsforsikring, som dækker dig økonomisk i tilfælde af en ulykke på din ejendom, som du er ansvarlig for, som fx en person, der glider på isglatte fortov foran dit hjem, som du skal salte og rydde sne på?</p>
+            <button class="btn" onclick="saveAnswerStorm('yes'); submitStorm();">Ja</button>
+            <button class="btn" onclick="saveAnswerStorm('no'); submitStorm();">Nej</button>
+        </div>
+        <div id="house-insurance-questionsBug" style="display: none;">
+            <p>Ønsker du at dit hus bliver forsikret skulle der komme svamp, insekt eller råd angreb på det indvendige træværk? Det kan være skader på for eksempel spær.</p>
+            <button class="btn" onclick="saveAnswerBug('yes'); submitBug();">Ja</button>
+            <button class="btn" onclick="saveAnswerBug('no'); submitBug();">Nej</button>
+        </div>
+        <div id="house-insurance-questionsPipe" style="display: none;">
+            <p>Ønsker du at dit hus bliver forsikret imod vandskader på skjulte rør og stikledninger? Det kan være vandrør der sprænger eller bliver utætte. Stikledninger er de rør, som går fra huset og ud til det offentlige vejnet.</p>
+            <button class="btn" onclick="saveAnswerPipe('yes'); submitPipe();">Ja</button>
+            <button class="btn" onclick="saveAnswerPipe('no'); submitPipe();">Nej</button>
+        </div>
+
+        <div id="house-insurance-questionsWater" style="display: none;">
+            <p>Ved mange husforsikringer kræver det en ekstra forsikring at få dækket skader, som opstigende grund- eller kloakvand, vandskader fra synlige rør eller nedbør, ser du det relevant eller er det noget du selv ønsker at hæfte for?</p>
+            <button class="btn" onclick="saveAnswerWater('yes'); submitWater();">Ja</button>
+            <button class="btn" onclick="saveAnswerWater('no'); submitWater();">Nej</button>
+        </div>
+
+        <div id="house-insurance-questionsRat" style="display: none;">
+            <p>Hvis du får rotter, mus eller andre gnavere, som for eksempel laver skader på enten din isolering, dine rør eller ledninger, vil du have råd til selv at udbedre det, eller vil du foretrække at forsikringen tog sig af det?</p>
+            <button class="btn" onclick="saveAnswerRat('yes'); submitRat();">Ja</button>
+            <button class="btn" onclick="saveAnswerRat('no'); submitRat();">Nej</button>
+        </div>
+
+        <div id="house-insurance-questionsBath" style="display: none;">
+            <p>Oftest når der udbedres en skade i enten køkkenet, bad eller toilet hvor det er gået ud over fliserne er det ikke altid at man kan skaffe de samme fliser, så det altså ser ens ud hele vejen rundt. Vil du have det fint med det eller vil du gerne at tilskud af forsikringen, på typisk 50% til at få skiftet resten? </p>
+            <button class="btn" onclick="saveAnswerBath('yes'); submitBath();">Ja</button>
+            <button class="btn" onclick="saveAnswerBath('no'); submitBath();">Nej</button>
+        </div>
+
+        <!-- Ulykkesforsikring spg.-->
+        <div id="accident-insurance-headline" style="display: none;">
+            <h2>Ulykkesforsikring</h2>
+        </div>
+
+        <div id="accident-insurance-questionsSum" style="display: none;">
+            <p>Invaliditetssum på en ulykkesforsikring er det beløb, du får udbetalt, hvis du bliver permanent handicappet efter en ulykke. Mengraden er en procentsats, der bestemmer, hvor stor en del af forsikringssummen du vil modtage.
+
+            Når din mengrad er fastsat, får du udbetalt en procentdel af det beløb, du har forsikret dig for. For eksempel, hvis din mengrad er 10%, vil du modtage 10% af forsikringssummen.
+            Hvilken sum ønsker du at forsikre dig for?</p>
+            <button class="btn" onclick="saveAnswerSum('500'); submitSum();">500.000</button>
+            <button class="btn" onclick="saveAnswerSum('600'); submitSum();">600.000</button>
+            <button class="btn" onclick="saveAnswerSum('700'); submitSum();">700.000</button>
+            <button class="btn" onclick="saveAnswerSum('800'); submitSum();">800.000</button>
+            <button class="btn" onclick="saveAnswerSum('1000'); submitSum();">1.000.000</button>
+            <button class="btn" onclick="saveAnswerSum('1200'); submitSum();">1.200.000</button>
+            <button class="btn" onclick="saveAnswerSum('1400'); submitSum();">1.400.000</button>
+            <button class="btn" onclick="saveAnswerSum('1600'); submitSum();">1.600.000</button>
+            <button class="btn" onclick="saveAnswerSum('1800'); submitSum();">1.800.000</button>
+            <button class="btn" onclick="saveAnswerSum('2000'); submitSum();">2.000.000</button>
+        </div>
+
+        <div id="accident-insurance-questionsInstant" style="display: none;">
+            <p>Hvis du kommer ud for en ulykke, men ikke får et varigt men, men blot knoglebrud, vil du så have en erstatning? Mange benytter den til hjælp til madlavning, rengøring og kørsel mens man har nedsat funktion.</p>
+            <button class="btn" onclick="saveAnswerInstant('yes'); submitInstant();">Ja</button>
+            <button class="btn" onclick="saveAnswerInstant('no'); submitInstant();">Nej</button>
+        </div>
+        
+        <div id="accident-insurance-questionsBike" style="display: none;">
+            <p>Kører du motorcykel eller knallert?</p>
+            <button class="btn" onclick="saveAnswerBike('yes'); submitBike();">Ja</button>
+            <button class="btn" onclick="saveAnswerBike('no'); submitBike();">Nej</button>
+        </div>
+        
+        <div id="accident-insurance-questionsChew" style="display: none;">
+            <p>Vil du være forsikret mod eventuelle omkostninger, der kan opstå som følge af tyggeskader?</p>
+            <button class="btn" onclick="saveAnswerChew('yes'); submitChew();">Ja</button>
+            <button class="btn" onclick="saveAnswerChew('no'); submitChew();">Nej</button>
+        </div>
+
+        <div id="accident-insurance-questionsTeeth" style="display: none;">
+            <p>Vil du være forsikret mod omkostninger i forbindelse med tandbehandlinger, herunder huller i tænderne, rodbehandling, tandkødsbetændelse, kroner eller broer?</p>
+            <button class="btn" onclick="saveAnswerTeeth('yes'); submitTeeth();">Ja</button>
+            <button class="btn" onclick="saveAnswerTeeth('no'); submitTeeth();">Nej</button>
+        </div>
+
+        <div id="accident-insurance-questionsSport" style="display: none;">
+            <p>Dyrker du farlig sport? Eksempler på farlig sport er fx motorløb, gokartkørsel, faldskærmsudspring, riverrafting, bjergbestigning, rappelling, boksning, karate, dykning m.m. </p>
+            <button class="btn" onclick="saveAnswerSport('yes'); submitSport();">Ja</button>
+            <button class="btn" onclick="saveAnswerSport('no'); submitSport();">Nej</button>
+        </div>        
+
+        <br>
+
+        <h2 style="display:none" id="indboTitle" style="font-family: Arial, Helvetica, sans-serif;font-size: 30px;">Indbo:</h2>
+        <p id="homeRecommendation" style="display: none;">Vi anbefaler en indboforsikring:</p>
+        <div class="text" id="recommendationRenting" style="display: none;"></div>
+        <div class="text" id="recommendationElectronics" style="display: none;"></div>
+        <div class="text" id="recommendationSudden" style="display: none;"></div>
+        <div class="text" id="recommendationCycle" style="display: none;"></div>
+
+        <h2 style="display:none" id="husTitle" style="font-family: Arial, Helvetica, sans-serif;font-size: 30px;">Hus:</h2>
+        <p id="houseRecommendation" style="display: none;">Vi anbefaler en husforsikring:</p>
+        <div class="text" id="recommendationFire" style="display: none;"></div>
+        <div class="text" id="recommendationStorm" style="display: none;"></div>
+        <div class="text" id="recommendationBug" style="display: none;"></div>
+        <div class="text" id="recommendationPipe" style="display: none;"></div>
+        <div class="text" id="recommendationWater" style="display: none;"></div>
+        <div class="text" id="recommendationRat" style="display: none;"></div>
+        <div class="text" id="recommendationBath" style="display: none;"></div>
+
+        <h2 style="display:none" id="accidentTitle" style="font-family: Arial, Helvetica, sans-serif;font-size: 30px;">Ulykkesforsikring:</h2>
+        <p id="accidentRecommendation" style="display: none;">Vi anbefaler en ulykkesforsikring:</p>
+        <div class="text" id="recommendationSum" style="display: none;"></div>
+        <div class="text" id="recommendationInstant" style="display: none;"></div>
+        <div class="text" id="recommendationBike" style="display: none;"></div>
+        <div class="text" id="recommendationChew" style="display: none;"></div>
+        <div class="text" id="recommendationTeeth" style="display: none;"></div>
+        <div class="text" id="recommendationSport" style="display: none;"></div>
+
+        <button id="submitall" class="btn" type="submit" onclick="submitAll()">Se anbefalinger</button>
+        <script src="js/script.js"></script>
+    </div>
+</body>
+</html>
+
+
