@@ -1,0 +1,73 @@
+<h1>Insurance Offers</h1>
+<p id="please-select-text">Please select which insurances you would like offers for:</p>
+<form id="insurance-form" onsubmit="return handleSubmit()">
+  <label>
+    <input type="checkbox" name="house" value="house">
+    House Insurance
+  </label><br>
+  <label>
+    <input type="checkbox" name="home" value="home" onclick="showHomeQuestions(this)">
+    Home Insurance
+  </label><br>
+  <label>
+    <input type="checkbox" name="accident" value="accident">
+    Accident Insurance
+  </label><br>
+  <label>
+    <input type="checkbox" name="car" value="car">
+    Car Insurance
+  </label><br>
+  <label>
+    <input type="checkbox" name="travel" value="travel">
+    Travel Insurance
+  </label><br>
+  <label>
+    <input type="checkbox" name="dog" value="dog">
+    Dog Insurance
+  </label><br>
+  <div id="home-questions" style="display: none;">
+    <p>Har du købt elektronik indenfor de sidste 4 år, som ville påvirke din privatøkonomi hvis, det blev skadet og du skulle købe nyt?</p>
+    <label>
+      <input type="radio" name="electronics" value="yes">
+      Yes
+    </label>
+    <label>
+      <input type="radio" name="electronics" value="no">
+      No
+    </label><br>
+    <p>Bor du til leje?</p>
+    <label>
+      <input type="radio" name="rented" value="yes">
+      Yes
+    </label>
+    <label>
+      <input type="radio" name="rented" value="no">
+      No
+    </label><br>
+  </div>
+  <button type="submit" onclick="submitForm()">Submit</button>
+</form>
+
+function handleSubmit() {
+    event.preventDefault(); // prevent form from submitting
+  
+    // get user's selected insurances
+    const selectedInsurances = [];
+    const checkboxes = document.querySelectorAll('input[type=checkbox]:checked');
+    for (let i = 0; i < checkboxes.length; i++) {
+      selectedInsurances.push(checkboxes[i].value);
+    }
+  
+    // get user's responses to additional questions for home insurance
+    let hasElectronics = null;
+    let isRented = null;
+    const homeQuestions = document.getElementById('home-questions');
+    if (homeQuestions.style.display !== 'none') {
+      const electronicsRadios = document.getElementsByName('electronics');
+      for (let i = 0; i < electronicsRadios.length; i++) {
+        if (electronicsRadios[i].checked) {
+          hasElectronics = electronicsRadios[i].value === 'yes';
+          break;
+        }
+      }
+      const rented
